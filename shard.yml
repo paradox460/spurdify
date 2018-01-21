@@ -1,0 +1,13 @@
+name: spurdify
+version: 0.1.0
+
+authors:
+  - Jeff Sandberg <paradox460@gmail.com>
+
+targets:
+  spurdify:
+    main: src/spurdify.cr
+
+crystal: 0.24.1
+
+license: MIT
