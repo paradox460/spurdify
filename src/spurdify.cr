@@ -8,7 +8,7 @@ SPURDIFICATION = {
   "right"   => "rite",
   "your"    => "ur",
   "god"     => "dog",
-  "."       => -> { return " :" + ("D" * rand(5)) },
+  "\\."       => -> { return " :" + ("D" * rand(5)) },
   ","       => -> { return " x" + ("D" * rand(5)) },
   "wh"      => "w",
   "th"      => "d",
@@ -64,10 +64,11 @@ SPURDIFICATION = {
 
 def spurdify(text : String) : String
   SPURDIFICATION.each do |k, v|
+    regex = Regex.new(k, Regex::Options::IGNORE_CASE)
     text = if v.is_a?(Proc)
-      text.gsub(k, &v)
+      text.gsub(regex, &v)
     else
-      text.gsub(k, v)
+      text.gsub(regex, v)
     end
   end
   return text
@@ -94,8 +95,8 @@ OptionParser.parse! do |parser|
   BANNER
 
   parser.on("-f FILE", "--file=FILE", "A text file to fugg up") { |f| file = f }
-  parser.on("-h", "--help", "Show this help") { puts parser }
-  parser.on("-v", "--version", "Show version") { puts Spurdify::VERSION }
+  parser.on("-h", "--help", "Show this help") { puts parser; exit 0 }
+  parser.on("-v", "--version", "Show version") { puts Spurdify::VERSION; exit 0 }
 
   parser.unknown_args { |ua|  args = ua }
 end
@@ -106,7 +107,6 @@ elsif args.size > 0
   args = args.as(Array).join(" ") if args.is_a? Array
   text_io = IO::Memory.new(args.as(String))
 else
-  puts "Type stuff to be spurdified."
   text_io = STDIN
 end
 
