@@ -63,15 +63,15 @@ SPURDIFICATION = {
   "ing"     => "ign",
   "ic"      => "ig",
   "ng"      => "nk"
-}
+}.map { |k, v| { Regex.new(k, Regex::Options::IGNORE_CASE), v } }.to_h
 
 def spurdify(text : String) : String
+  text = text.downcase
   SPURDIFICATION.each do |k, v|
-    regex = Regex.new(k, Regex::Options::IGNORE_CASE)
     text = if v.is_a?(Proc)
-      text.gsub(regex, &v)
+      text.gsub(k, &v)
     else
-      text.gsub(regex, v)
+      text.gsub(k, v)
     end
   end
   return text
