@@ -1,4 +1,4 @@
-import strutils, unicode
+import strutils, unicode, nre, random
 
 type
   Replacement = tuple[pattern: string, replacement: string]
@@ -66,5 +66,23 @@ const spurdification: ReplacementSequence = @[
   ("ng", "nk")
 ]
 
+randomize()
+
+proc bigEmote(match: string) : string =
+  var
+    leader : string
+    mouth : string = "D"
+  case match
+  of ".": leader = ":"
+  of ",": leader = "x"
+  of ";":
+    leader = ":"
+    mouth = "O"
+  else:
+    return match
+  var number_of_chars: int = rand(4) + 1
+  return " $1$2" % [leader, repeat(mouth, number_of_chars)]
+
 proc processText*(text : string): string =
-  return text.toLower.multiReplace(spurdification)
+  result = text.toLower.multiReplace(spurdification)
+  result = nre.replace(result, re"[.,;]", bigEmote)
