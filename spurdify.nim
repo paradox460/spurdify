@@ -63,7 +63,8 @@ const spurdification: ReplacementSequence = @[
   ("alk", "olk"),
   ("ing", "ign"),
   ("ic", "ig"),
-  ("ng", "nk")
+  ("ng", "nk"),
+  ("p", "b")
 ]
 
 randomize()
