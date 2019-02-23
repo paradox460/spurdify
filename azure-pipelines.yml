@@ -34,5 +34,5 @@ jobs:
       - task: PublishPipelineArtifact@0
         inputs:
           artifactName: 'linux_spurdify'
-          targetPath: /spurdify
+          targetPath: spurdify
           
