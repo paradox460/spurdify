@@ -29,7 +29,7 @@ This project uses [Nim](https://nim-lang.org/), and so compilation is pretty eas
 
 1. Install nim, using your package manager of choice (or [ASDF](https://github.com/asdf-vm/asdf))
 2. Clone this repo
-3. run `nim c -d:release -o:spurdify main.nim`
+3. run `nim build`
 4. You now have a `spurdify` executable in this directory. Use it here, or copy it to somewhere in your path.
 
 ## Cross-compiling

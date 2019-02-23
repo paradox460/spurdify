@@ -1,5 +1,5 @@
-task build, "Builds dehound":
-  let args = "c -d:release --opt:size -o:spurdify main.nim"
+task build, "Builds spurdify":
+  let args = "c -d:release -d:ssl --opt:size -o:spurdify main.nim"
   selfExec args
 
   if findExe("upx") != "":
