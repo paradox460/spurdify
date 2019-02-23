@@ -29,5 +29,7 @@ jobs:
       vmImage: 'Ubuntu-16.04'
     container: 'nimlang/nim:latest'
     steps:
-      - script: nim c -d:release -o:$Build.ArtifactStagingDirectory/linux_spurdify main.nim
+      - script: nim c -d:release -o:spurdify main.nim
         displayName: 'Build Spurdify'
+      - script: mv spurdify $Build.ArtifactStagingDirectory/linux_spurdify
+        displayName: 'Publish Spurdify Artifact'
