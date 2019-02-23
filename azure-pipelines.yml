@@ -1,0 +1,22 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- script: |
+    curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
+    sh init.sh -y
+    export PATH=~/.nimble/bin:$PATH
+    echo "export PATH=~/.nimble/bin:$PATH" >> ~/.profile
+    choosenim STABLE
+  displayName: 'Install NIM'
+
+- script: nim c -d:release -o:spurdify main.nim
+  displayName: 'Build Spurdify'
