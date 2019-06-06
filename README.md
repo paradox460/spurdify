@@ -24,13 +24,22 @@ Flags:
     -f=<filename>, --file=<filename>:    A text file to process
 ```
 
-# Compiling
-This project uses [Nim](https://nim-lang.org/), and so compilation is pretty easy, depending on your system.
+# Installation
+This project uses [Nim](https://nim-lang.org/), and so installation is pretty easy, depending on your system.
 
 1. Install nim, using your package manager of choice (or [ASDF](https://github.com/asdf-vm/asdf))
-2. Clone this repo
-3. run `nim build`
-4. You now have a `spurdify` executable in this directory. Use it here, or copy it to somewhere in your path.
+2. Run `nimble install https://github.com/paradox460/spurdify`
+4. You now have a `spurdify` executable in `~/.nimble/bin` directory and you can `import spurdify` to use as a library.
+
+# Using as a library
+
+Library exports a single function `spurdify`.
+
+```nim
+import spurdify
+
+echo spurdify "Nim is epic."
+```
 
 ## Cross-compiling
 Since Nim rocks, you can cross-compile. [See the Compiler Manual for details](https://nim-lang.org/docs/nimc.html#cross-compilation).
