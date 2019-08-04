@@ -14,8 +14,8 @@ bin           = @["spurdify"]
 requires "nim >= 0.19.0"
 
 task upx, "Build minified binary":
-  let args = "c -d:release --opt:size --passL:-s --passC:-flto -o:spurdify src/spurdify"
-  selfExec args
+  let args = "nimble build -d:release"
+  exec args
 
   if findExe("upx") != "":
     echo "Running `upx --best`"
