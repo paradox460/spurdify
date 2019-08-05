@@ -1,5 +1,7 @@
 Spurdification! For when you want to make text sound like Spurdo Sparde wrote it.
 
+[![Build Status](https://dev.azure.com/paradox460/spurdify/_apis/build/status/Linux%26Mac%20Build%20and%20Release?branchName=master)](https://dev.azure.com/paradox460/spurdify/_build/latest?definitionId=6&branchName=master)
+
 # Usage
 ```
 Fuggs up text :DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
