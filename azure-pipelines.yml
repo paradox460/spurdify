@@ -5,6 +5,7 @@
 
 trigger:
 - master
+- refs/tags/v*
 
 variables:
   - name: nimVersion
