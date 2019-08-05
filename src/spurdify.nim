@@ -66,6 +66,7 @@ const spurdification: ReplacementSequence = @[
   ("ng", "nk"),
   ("p", "b")
 ]
+const sillyOs = ["ö", "ø", "0"]
 
 randomize()
 
@@ -84,15 +85,22 @@ proc bigEmote(match: string) : string =
   var number_of_chars: int = rand(4) + 1
   return " $1$2" % [leader, repeat(mouth, number_of_chars)]
 
+proc mangleOs(match: string) : string =
+  if rand(3) == 0:
+    return sillyOs[rand(sillyOs.len - 1)]
+  else:
+    return match
+
 proc spurdify*(text : string): string =
   result = text.toLower.multiReplace(spurdification)
   result = nre.replace(result, re"[.,;]", bigEmote)
+  result = nre.replace(result, re"o", mangleOs)
 
 when isMainModule:
   import parseopt, terminal
 
   const
-    version = "0.0.3"
+    version = "0.0.4"
 
     spurdo_face = """
       ▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄▄
