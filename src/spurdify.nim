@@ -87,7 +87,7 @@ proc bigEmote(match: string) : string =
 
 proc mangleOs(match: string) : string =
   if rand(3) == 0:
-    return sillyOs[rand(sillyOs.len - 1)]
+    return sample(sillyOs)
   else:
     return match
 
