@@ -5,6 +5,8 @@ type
   ReplacementSequence = seq[Replacement]
 
 const spurdification: ReplacementSequence = @[
+  ("spurdo", "spurdo"),
+  ("sparde", "spärde"),
   ("kek", "geg"),
   ("epic", "ebin"),
   ("right", "rite"),
