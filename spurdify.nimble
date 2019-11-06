@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.0.4"
+version       = "0.0.5"
 author        = "Jeff Sandberg"
 description   = "Spurdification library and CLI"
 license       = "MIT"
@@ -11,7 +11,7 @@ bin           = @["spurdify"]
 
 # Dependencies
 
-requires "nim >= 0.19.0"
+requires "nim >= 0.20.0"
 
 task upx, "Build minified binary":
   let args = "nimble build -d:release"
