@@ -1,11 +1,3 @@
 # Changes
-**Added a new "mangle `O`s" feature.** Now the script will occasionally replace any letter `o` with a "spurdish" variant.
-
-# Automatic Builds
-I've got automatic builds running on Azure for Linux and OS X, and the releases will automatically be published here. You can check the badge on the readme for bleeding versions.
-
-# Nim 20 compatibility
-I didn't have to change anything, but we're now nim 20 compatible
-
-# What about 0.0.3
-I never released 0.0.3, because it only really involved the creation of library features (thanks for the PR @SolitudeSF!) and a Nimble package, and no new actual spurdification features
++ Add ability for spurdo sparde to say spurdo sparde. Previously it would output `sburdo sbarde` (4b33a9ebc6ada242ce8d737d2cca49e86a7069ca)
++ Bumped nim version requirements to v0.20.0, due to the addition of the `random.sample` func call (594a15a9ce7553b597d0c44a04f2f1dd022c351d)
