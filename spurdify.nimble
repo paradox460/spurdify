@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.0.5"
+version       = "0.0.6"
 author        = "Jeff Sandberg"
 description   = "Spurdification library and CLI"
 license       = "MIT"
