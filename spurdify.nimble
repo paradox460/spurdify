@@ -15,7 +15,7 @@ binDir        = "bin/"
 requires "nim >= 0.20.2, cligen >= 1.0.0 & < 1.1.0"
 
 task upx, "Build minified binary":
-  let args = "nimble build -d:release"
+  let args = "nimble build -d:release -y"
   exec args
 
   if findExe("upx") != "":

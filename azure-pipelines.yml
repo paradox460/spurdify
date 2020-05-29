@@ -9,7 +9,7 @@ trigger:
 
 variables:
   - name: nimVersion
-    value: 0.20.0
+    value: 0.20.2
 
 jobs:
 - job: Build
@@ -26,29 +26,27 @@ jobs:
     vmImage: $(imageName)
 
   steps:
-  - script: sudo apt-get update && sudo apt-get install upx
-    displayName: 'Install UPX (Linux)'
+  - script: docker build . --build-arg nimVersion=$(nimVersion) -t spurdify
+    displayName: 'Build docker container (Linux)'
     condition: eq(variables['Agent.OS'], 'Linux')
 
-  - script: brew install upx
-    displayName: 'Install UPX (Mac)'
+  - script: |
+      docker run --rm -v $(Build.SourcesDirectory):/app spurdify nimble upx
+      sudo mv bin/spurdify $(binaryName)
+    displayName: 'Build binary (Linux)'
+    condition: eq(variables['Agent.OS'], 'Linux')
+
+  - script: |
+      brew install nim upx
+    displayName: 'Install dependencies (Mac)'
     condition: eq(variables['Agent.OS'], 'Darwin')
 
   - script: |
-      curl 'https://nim-lang.org/download/nim-$(nimVersion)-linux_x64.tar.xz' > nim.tar.xz
-      tar xvf nim.tar.xz
-    displayName: 'Download and Install nim'
-    condition: eq(variables['Agent.OS'], 'Linux')
-
-  - script: brew install nim
-    displayName: 'Install Nim via Homebrew'
-    condition: eq(variables['Agent.OS'], 'Darwin')
-
-  - script: |
-      export PATH=nim-$(nimVersion)/bin/:$PATH
+      export PATH=~/.nimble/bin:nim-$(nimVersion)/bin/:$PATH
       nimble upx
-      mv spurdify $(binaryName)
-    displayName: 'Build binary'
+      mv bin/spurdify $(binaryName)
+    displayName: 'Build binary (Mac)'
+    condition: eq(variables['Agent.OS'], 'Darwin')
 
   - task: PublishPipelineArtifact@0
     displayName: Publish Artifact
