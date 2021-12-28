@@ -1,3 +1,6 @@
+#[macro_use]
+extern crate clap;
+
 use clap::{App, AppSettings, Arg};
 use spurdify::spurdify;
 use std::fs::File;
@@ -21,8 +24,8 @@ const SPURDO_FACE: &str = r#"
 
 fn main() {
   let cli_matches = App::new("spurdify")
-    .version("0.1.0")
-    .about("Spurdifies text")
+    .version(crate_version!())
+    .about(format!("Spurdifies text\n{}", SPURDO_FACE).as_str())
     .setting(AppSettings::TrailingVarArg)
     .arg(
       Arg::with_name("file")
