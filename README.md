@@ -1,6 +1,7 @@
+# Spurdify
 Spurdification! For when you want to make text sound like Spurdo Sparde wrote it. See README-spurdo.md for an example.
 
-# Usage
+## Usage
 
 ```
 spurdify 0.1.1
@@ -31,10 +32,23 @@ ARGS:
     <TEXT>...    Text to spurdify
 ```
 
-# Other versions
+## Installation
+
+Binaries for several OSes and Architectures are available for download on the [releases](https://github.com/paradox460/spurdify/releases/latest) page.
+
+If you don't see your arch available, you can do a cargo install
+
+### Cargo
+
+
+```sh
+cargo install spurdify
+```
+
+## Other versions
 I have previously written this program in Nim and Crystal. Both exist in the branches named as such.
 
-# License
+## License
 The MIT License (MIT)
 
 Copyright (c) 2023 Jeff Sandberg
