@@ -39,7 +39,6 @@ fn main() {
     ("pi", "bi"),
     ("up", "ub"),
     ("va", "ba"),
-    ("ck", "gg"),
     ("cr", "gr"),
     ("kn", "gn"),
     ("lt", "ld"),
@@ -69,6 +68,7 @@ fn main() {
     ("ic", "ig"),
     ("ng", "nk"),
     ("p", "b"),
+    ("gge", "gbe"),
   ]
   .iter()
   .cloned()
