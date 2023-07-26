@@ -52,7 +52,7 @@ I previously wrote this thing in Crystal. That code exists on the Crystal branch
 # License
 The MIT License (MIT)
 
-Copyright (c) 2020 Jeff Sandberg
+Copyright (c) 2023 Jeff Sandberg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
