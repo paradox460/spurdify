@@ -1,4 +1,4 @@
-import cligen, strformat, terminal
+import cligen, terminal
 
 const
   NimblePkgVersion {.strdefine.} = ""
