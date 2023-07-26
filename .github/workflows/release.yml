@@ -1,0 +1,54 @@
+name: "Release"
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    name: Release - ${{ matrix.platform.release_for }}
+    strategy:
+      matrix:
+        platform:
+          - release_for: Linux-x86_64
+            os: ubuntu-latest
+            target: x86_64-unknown-linux-musl
+          - release_for: macOS-x86_64
+            os: macos-latest
+            target: x86_64-apple-darwin
+          - release_for: macOS-aarch64
+            os: macos-latest
+            target: aarch64-apple-darwin
+          - release_for: Windows-x86_64
+            os: windows-latest
+            target: x86_64-pc-windows-msvc
+            extension: .exe
+
+    runs-on: ${{ matrix.platform.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build binary
+        uses: houseabsolute/actions-rust-cross@v0
+        with:
+          target: ${{ matrix.platform.target }}
+          args: "--locked --release"
+          strip: true
+      - name: Copy Binary
+        shell: bash
+        run: |
+          cp target/${{ matrix.platform.target }}/release/spurdify${{ matrix.platform.extension}} spurdify-${{ matrix.platform.target }}${{ matrix.platform.extension }}
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: spurdify-${{ matrix.platform.target}}${{ matrix.platform.extension }}
+          path: "spurdify-*"
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          files: "spurdify-*"
