@@ -5,6 +5,7 @@ use clap::{App, AppSettings, Arg};
 use spurdify::spurdify;
 use std::fs::File;
 use std::io;
+use std::io::IsTerminal;
 use std::io::prelude::*;
 use std::io::{BufRead, BufReader, BufWriter};
 use std::process::exit;
@@ -55,7 +56,7 @@ fn main() {
   if let Some(filename) = cli_matches.value_of("file") {
     file = Box::new(File::open(filename).unwrap());
   } else {
-    if atty::is(atty::Stream::Stdin) {
+    if io::stdin().is_terminal() {
       is_tty = true;
       println!(
         "{}\nType a line and see it spurdified instantly. (run with --help for more information)",

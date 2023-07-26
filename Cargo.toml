@@ -1,6 +1,6 @@
 [package]
 name = "spurdify"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Jeff Sandberg <jeff@pdx.su"]
 license = "MIT"
@@ -9,8 +9,7 @@ license = "MIT"
 
 [dependencies]
 clap = "2.3"
-regex = "1"
+regex = "1.5.5"
 rand = "0.8"
 lazy_static = "1.4.0"
-atty = "0.2.14"
 aho-corasick = "0.7"

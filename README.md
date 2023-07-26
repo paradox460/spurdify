@@ -3,7 +3,7 @@ Spurdification! For when you want to make text sound like Spurdo Sparde wrote it
 # Usage
 
 ```
-spurdify 0.1.0
+spurdify 0.1.1
 Spurdifies text
 
     ▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄▄
